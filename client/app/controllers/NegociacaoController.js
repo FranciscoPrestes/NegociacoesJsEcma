@@ -2,13 +2,19 @@ class NegociacaoController {
     constructor() {
 
         let $ = document.querySelector.bind(document);
+
         this._inputData = $("#data");
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
+
         this._listaNegociacoes = new ListaNegociacoes();
         this._listaNegociacoesView = new NegociacoesView($("#negociacoesView"));
-       
-        this._listaNegociacoesView.update(this._listaNegociacoes)
+        this._listaNegociacoesView.update(this._listaNegociacoes);
+
+        this._mensagem = new Mensagem();
+        this._mensagemView = new MensagemView($("#mensagemView"));
+        this._mensagemView.update(this._mensagem);
+
         this._limpaFormulario();
 
     }
@@ -19,6 +25,10 @@ class NegociacaoController {
 
         this._listaNegociacoes.adiciona(this._criaNegociaco())
         this._listaNegociacoesView.update(this._listaNegociacoes)
+
+        this._mensagem.texto = "Negociação adicionada com sucesso.";
+        this._mensagemView.update(this._mensagem);
+
         this._limpaFormulario();
 
     }
