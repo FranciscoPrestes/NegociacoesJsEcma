@@ -1,6 +1,8 @@
 class Mensagem {
-    constructor(texto = '') {
+   
+    constructor(subscription,texto = '') {
         this._texto = texto;
+        this._subscription = subscription;
     }
 
     get texto() {
@@ -9,5 +11,6 @@ class Mensagem {
 
     set texto(texto) {
         this._texto = texto;
+        this._subscription(this);
     }
 }
